@@ -1,0 +1,64 @@
+[gd_scene load_steps=4 format=3 uid="uid://tutorial_scene"]
+
+[ext_resource type="Script" path="res://scripts/tutorial.gd" id="1_tut"]
+[ext_resource type="Texture2D" uid="uid://b1xupvp8ufsn5" path="res://assets/campo.png" id="2_campo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg"]
+bg_color = Color(0, 0, 0, 0.7)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="Tutorial" type="Node2D"]
+script = ExtResource("1_tut")
+
+[node name="CampoFundo" type="Sprite2D" parent="."]
+modulate = Color(0.4, 0.4, 0.4, 1)
+position = Vector2(576, 324)
+scale = Vector2(0.462, 0.38)
+texture = ExtResource("2_campo")
+
+[node name="Instrucoes" type="PanelContainer" parent="."]
+offset_left = 288.0
+offset_top = 221.0
+offset_right = 864.0
+offset_bottom = 471.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_bg")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Instrucoes"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="ExemploImagem" type="TextureRect" parent="Instrucoes/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Instrucoes/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Bem-vindo ao Pênalti Educativo!
+Olhe para a imagem para saber qual é a palavra."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+
+[node name="Proximo" type="Button" parent="."]
+offset_left = 488.0
+offset_top = 480.0
+offset_right = 664.0
+offset_bottom = 540.0
+theme_override_font_sizes/font_size = 25
+text = "PRÓXIMO"
+
+[node name="Voltar" type="Button" parent="."]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 150.0
+offset_bottom = 70.0
+theme_override_font_sizes/font_size = 20
+text = "MENU"
