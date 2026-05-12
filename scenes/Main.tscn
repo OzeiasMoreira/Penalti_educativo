@@ -7,23 +7,9 @@
 [ext_resource type="Script" uid="uid://bdbtj07u4kd2k" path="res://scripts/bola.gd" id="4_jlsqs"]
 [ext_resource type="Texture2D" uid="uid://cd7qsaybfeq1w" path="res://assets/goleiro.png" id="5_q8u5g"]
 [ext_resource type="Script" uid="uid://blcbe4vrabvtb" path="res://scripts/goleiro.gd" id="7_nxtc6"]
-[ext_resource type="Texture2D" uid="uid://mn8ru5vjyy6w" path="res://assets/alvoozi.png" id="8_alvoozi"]
 [ext_resource type="Texture2D" uid="uid://dm2yxj0xo4x35" path="res://assets/imagem_acerto.png" id="9_acerto"]
 [ext_resource type="Texture2D" uid="uid://bdt7ieqivvuch" path="res://assets/imagem_erro.png" id="10_erro"]
 [ext_resource type="Script" uid="uid://b24wqg3nxo4c7" path="res://scripts/jogador.gd" id="11_jogador"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_modern"]
-bg_color = Color(0, 0, 0, 0.6)
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
-expand_margin_left = 10.0
-expand_margin_top = 5.0
-expand_margin_right = 10.0
-expand_margin_bottom = 5.0
-shadow_color = Color(0, 0, 0, 0.3)
-shadow_size = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_moldura"]
 bg_color = Color(1, 1, 1, 1)
@@ -40,31 +26,42 @@ shadow_color = Color(0, 0, 0, 0.2)
 shadow_size = 8
 shadow_offset = Vector2(2, 2)
 
-
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_modern"]
+bg_color = Color(0, 0, 0, 0.6)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+expand_margin_left = 10.0
+expand_margin_top = 5.0
+expand_margin_right = 10.0
+expand_margin_bottom = 5.0
+shadow_color = Color(0, 0, 0, 0.3)
+shadow_size = 5
 
 [node name="Main" type="Node2D" unique_id=133320203]
 script = ExtResource("1_c01mt")
 
 [node name="Campo" type="Sprite2D" parent="." unique_id=480549246]
-position = Vector2(575.50006, 324.00006)
-scale = Vector2(0.462, 0.37971696)
+position = Vector2(582.49994, 327.00003)
+scale = Vector2(0.763002, 0.6164251)
 texture = ExtResource("1_vcsgt")
 
 [node name="Goleiro" type="Sprite2D" parent="." unique_id=918940213]
-position = Vector2(558, 188)
-scale = Vector2(0.51301706, 0.5360773)
+position = Vector2(596, 268)
+scale = Vector2(0.3564443, 0.31370682)
 texture = ExtResource("5_q8u5g")
 script = ExtResource("7_nxtc6")
 
 [node name="Jogador" type="Sprite2D" parent="." unique_id=2015271806]
-position = Vector2(558, 391)
-scale = Vector2(0.880216, 0.984502)
+position = Vector2(502, 413.00006)
+scale = Vector2(0.3196634, 0.3965161)
 texture = ExtResource("2_c01mt")
 script = ExtResource("11_jogador")
 
 [node name="Bola" type="Sprite2D" parent="." unique_id=750831523]
-position = Vector2(557.51874, 478.99374)
-scale = Vector2(0.14617793, 0.1842478)
+position = Vector2(583, 491.00006)
+scale = Vector2(0.08871395, 0.09700673)
 texture = ExtResource("3_nxtc6")
 script = ExtResource("4_jlsqs")
 
@@ -75,16 +72,16 @@ custom_minimum_size = Vector2(120, 70)
 anchors_preset = -1
 anchor_top = -72.025
 anchor_right = 265.80502
-offset_left = 92.0
-offset_top = 96.025
-offset_right = -52.805023
-offset_bottom = 106.0
+offset_left = 148.0
+offset_top = 148.025
+offset_right = 35.194977
+offset_bottom = 193.0
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 12
 theme_override_font_sizes/font_size = 45
 text = "LA"
-icon = ExtResource("8_alvoozi")
+icon = ExtResource("3_nxtc6")
 flat = true
 icon_alignment = 1
 expand_icon = true
@@ -94,48 +91,48 @@ custom_minimum_size = Vector2(120, 70)
 anchors_preset = -1
 anchor_top = -77.16901
 anchor_right = 150.90901
-offset_left = 84.0
-offset_top = 272.169
-offset_right = 58.09099
-offset_bottom = 271.0
+offset_left = 137.0
+offset_top = 336.169
+offset_right = 171.09099
+offset_bottom = 370.0
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 12
 theme_override_font_sizes/font_size = 45
 text = "BO"
-icon = ExtResource("8_alvoozi")
+icon = ExtResource("3_nxtc6")
 flat = true
 icon_alignment = 1
 expand_icon = true
 
 [node name="Silaba3" type="Button" parent="Silabas" unique_id=802577987]
 custom_minimum_size = Vector2(120, 70)
-offset_left = 864.0
-offset_top = 23.0
-offset_right = 1014.0
-offset_bottom = 108.0
+offset_left = 831.0
+offset_top = 83.0
+offset_right = 1030.0
+offset_bottom = 201.0
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 12
 theme_override_font_sizes/font_size = 45
 text = "DA"
-icon = ExtResource("8_alvoozi")
+icon = ExtResource("3_nxtc6")
 flat = true
 icon_alignment = 1
 expand_icon = true
 
 [node name="Silaba4" type="Button" parent="Silabas" unique_id=903421389]
 custom_minimum_size = Vector2(120, 70)
-offset_left = 859.0
-offset_top = 192.0
-offset_right = 1009.0
-offset_bottom = 277.0
+offset_left = 849.0
+offset_top = 250.0
+offset_right = 1022.0
+offset_bottom = 370.0
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 12
 theme_override_font_sizes/font_size = 45
 text = "MA"
-icon = ExtResource("8_alvoozi")
+icon = ExtResource("3_nxtc6")
 flat = true
 icon_alignment = 1
 expand_icon = true
@@ -149,21 +146,21 @@ theme_override_font_sizes/font_size = 50
 
 [node name="Palavra" type="Label" parent="." unique_id=696539231]
 custom_minimum_size = Vector2(200, 90)
-offset_left = 730.0
-offset_top = 515.0
-offset_right = 930.0
-offset_bottom = 605.0
+offset_left = 761.0
+offset_top = 534.0
+offset_right = 961.0
+offset_bottom = 624.0
 theme_override_font_sizes/font_size = 50
 text = "BO_ _"
 
-[node name="MolduraImagem" type="PanelContainer" parent="."]
-offset_left = 880.0
-offset_top = 450.0
-offset_right = 1080.0
-offset_bottom = 650.0
+[node name="MolduraImagem" type="PanelContainer" parent="." unique_id=832065458]
+offset_left = 931.0
+offset_top = 413.0
+offset_right = 1131.0
+offset_bottom = 613.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_moldura")
 
-[node name="ImagemPalavra" type="TextureRect" parent="MolduraImagem"]
+[node name="ImagemPalavra" type="TextureRect" parent="MolduraImagem" unique_id=858699173]
 layout_mode = 2
 expand_mode = 1
 stretch_mode = 5
@@ -182,9 +179,9 @@ position = Vector2(576, 324)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("10_erro")
 
-[node name="HUD" type="CanvasLayer" parent="."]
+[node name="HUD" type="CanvasLayer" parent="." unique_id=614465082]
 
-[node name="Placar" type="PanelContainer" parent="HUD"]
+[node name="Placar" type="PanelContainer" parent="HUD" unique_id=293043726]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -195,12 +192,12 @@ offset_bottom = -20.0
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_modern")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HUD/Placar"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/Placar" unique_id=137190856]
 layout_mode = 2
 theme_override_constants/separation = 5
 alignment = 1
 
-[node name="GolsLabel" type="Label" parent="HUD/Placar/VBoxContainer"]
+[node name="GolsLabel" type="Label" parent="HUD/Placar/VBoxContainer" unique_id=1328884280]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.4, 1, 0.4, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -209,7 +206,7 @@ theme_override_font_sizes/font_size = 32
 text = "GOLS: 0"
 horizontal_alignment = 1
 
-[node name="ErrosLabel" type="Label" parent="HUD/Placar/VBoxContainer"]
+[node name="ErrosLabel" type="Label" parent="HUD/Placar/VBoxContainer" unique_id=976416536]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.4, 0.4, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -217,5 +214,3 @@ theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 32
 text = "ERROS: 0"
 horizontal_alignment = 1
-
-

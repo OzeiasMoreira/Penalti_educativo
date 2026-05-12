@@ -79,8 +79,34 @@ func carregar_fase():
 	if has_node("/root/AudioManager"):
 		get_node("/root/AudioManager").tocar_apito()
 
+func _calcular_alvo_no_gol(botao) -> Vector2:
+	# Define a área do gol baseada nas posições do campo
+	# O gol fica na parte superior central do campo, ao redor do goleiro
+	var gol_centro_x = goleiro.position.x   # Centro horizontal do gol (596)
+	var gol_topo_y = goleiro.position.y - 55  # Topo do gol (acima do goleiro)
+	var gol_base_y = goleiro.position.y + 55  # Base do gol (abaixo do goleiro)
+	var gol_largura = 350  # Largura total do gol
+	
+	# Mapear cada botão para uma posição dentro do gol
+	# Cada sílaba vai para um canto diferente, com boa separação
+	if botao == s1:
+		# Silaba1 (esquerda cima) -> canto superior esquerdo do gol
+		return Vector2(gol_centro_x - gol_largura * 0.45, gol_topo_y)
+	elif botao == s2:
+		# Silaba2 (esquerda baixo) -> canto inferior esquerdo do gol
+		return Vector2(gol_centro_x - gol_largura * 0.45, gol_base_y)
+	elif botao == s3:
+		# Silaba3 (direita cima) -> canto superior direito do gol
+		return Vector2(gol_centro_x + gol_largura * 0.45, gol_topo_y)
+	elif botao == s4:
+		# Silaba4 (direita baixo) -> canto inferior direito do gol
+		return Vector2(gol_centro_x + gol_largura * 0.45, gol_base_y)
+	
+	# Fallback: centro do gol
+	return Vector2(gol_centro_x, goleiro.position.y)
+
 func clicar_silaba(botao):
-	var alvo = botao.global_position
+	var alvo = _calcular_alvo_no_gol(botao)
 	jogador.animar_chute()
 	bola.chutar(alvo)
 	

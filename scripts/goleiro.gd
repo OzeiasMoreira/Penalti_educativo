@@ -9,7 +9,8 @@ func _ready():
 	posicao_inicial = position
 
 func defender(pos):
-	destino = pos
+	# Goleiro se move apenas horizontalmente para defender
+	destino = Vector2(pos.x, posicao_inicial.y)
 	movendo = true
 
 func _process(delta):
