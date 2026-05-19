@@ -15,6 +15,12 @@ run/main_scene="res://scenes/Intro.tscn"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[display]
+
+window/size/viewport_width=1152
+window/size/viewport_height=648
+window/stretch/mode="canvas_items"
+window/stretch/aspect="keep"
 [autoload]
 
 AudioManager="*res://scenes/AudioManager.tscn"
