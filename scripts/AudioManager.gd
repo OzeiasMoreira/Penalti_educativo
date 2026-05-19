@@ -10,6 +10,9 @@ extends Node
 @onready var botao_volume = $CanvasLayer/Control/Tab/BotaoSom
 @onready var botao_sair = $CanvasLayer/Control/Tab/BotaoSair
 @onready var slider_volume = $CanvasLayer/Control/SliderVolume
+@onready var sfx_tafarel = $SFXTafarel
+@onready var sfx_luva = $SFXLuva
+@onready var music_uefa = $MusicUEFA
 
 var mutado = false
 
@@ -43,6 +46,9 @@ func ajustar_volume(valor):
 
 func voltar_ao_menu():
 	tocar_botao()
+	if music_uefa.playing:
+		music_uefa.stop()
+	tocar_musica()
 	get_tree().change_scene_to_file("res://scenes/Menu.tscn")
 
 func tocar_apito():
@@ -54,18 +60,43 @@ func tocar_chute():
 		sfx_chute.play()
 
 func tocar_gol():
-	if sfx_gol.stream:
-		sfx_gol.play()
+	var sorteio = randi() % 2
+	if sorteio == 0:
+		if sfx_gol.stream:
+			sfx_gol.play()
+	else:
+		if sfx_luva.stream:
+			sfx_luva.play()
+			await get_tree().create_timer(3.0).timeout
+			sfx_luva.stop()
 
 func tocar_erro():
+	var sorteio = randi() % 2
 	if sfx_erro.stream:
 		sfx_erro.play()
-	if sfx_errou_vocal.stream:
-		sfx_errou_vocal.play()
+		
+	if sorteio == 0:
+		if sfx_errou_vocal.stream:
+			sfx_errou_vocal.play()
+	else:
+		if sfx_tafarel.stream:
+			sfx_tafarel.play()
+			await get_tree().create_timer(3.0).timeout
+			sfx_tafarel.stop()
 
 func tocar_botao():
 	if sfx_botao.stream:
 		sfx_botao.play()
+
+func tocar_vitoria():
+	parar_musica()
+	if $MusicPlayer2.playing:
+		$MusicPlayer2.stop()
+		
+	if music_uefa.stream:
+		music_uefa.play()
+		await get_tree().create_timer(7.0).timeout
+		music_uefa.stop()
 
 func tocar_musica(fundo_alternativo = false):
 	if fundo_alternativo and $MusicPlayer2.stream:

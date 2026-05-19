@@ -9,16 +9,25 @@ extends Node2D
 @onready var s2 = $Silabas/Silaba2
 @onready var s3 = $Silabas/Silaba3
 @onready var s4 = $Silabas/Silaba4
-@onready var imagem_acerto = $ImagemAcerto
-@onready var imagem_erro = $ImagemErro
+@onready var imagem_acerto = $HUD/ImagemAcerto
+@onready var imagem_erro = $HUD/ImagemErro
 @onready var imagem_palavra = $MolduraImagem/ImagemPalavra
+@onready var pontos_label = $HUD/Placar/VBoxContainer/PontosLabel
 @onready var gols_label = $HUD/Placar/VBoxContainer/GolsLabel
 @onready var erros_label = $HUD/Placar/VBoxContainer/ErrosLabel
+@onready var painel_premiacao = $HUD/PainelPremiacao
+@onready var botao_jogar_novamente = $HUD/PainelPremiacao/Trofeu/BotaoJogarNovamente
+@onready var botao_menu = $HUD/PainelPremiacao/Trofeu/BotaoMenu
+@onready var trofeu_rect = $HUD/PainelPremiacao/Trofeu
 
 var fase_atual = 0
 var resposta_correta = ""
 var total_gols = 0
 var total_erros = 0
+var chutando = false
+var pontos = 0
+var meta_pontos = 30
+var estrelas = 3
 
 var fases = [
 	{
@@ -46,16 +55,20 @@ var fases = [
 
 func _ready():
 	randomize()
-	
-	# Trocar para a música de jogo
+
 	if has_node("/root/AudioManager"):
 		get_node("/root/AudioManager").tocar_musica(true)
-		
+
 	s1.pressed.connect(func(): clicar_silaba(s1))
 	s2.pressed.connect(func(): clicar_silaba(s2))
 	s3.pressed.connect(func(): clicar_silaba(s3))
 	s4.pressed.connect(func(): clicar_silaba(s4))
+
+	botao_jogar_novamente.pressed.connect(reiniciar_jogo)
+	botao_menu.pressed.connect(voltar_ao_menu)
+
 	carregar_fase()
+	atualizar_placar()
 
 func carregar_fase():
 	var fase = fases[fase_atual]
@@ -69,74 +82,59 @@ func carregar_fase():
 	s2.text = opcoes_embaralhadas[1]
 	s3.text = opcoes_embaralhadas[2]
 	s4.text = opcoes_embaralhadas[3]
-	
-	imagem_palavra.texture = fase["imagem"]
 
+	imagem_palavra.texture = fase["imagem"]
 	resposta_correta = fase["correta"]
 	mensagem.text = ""
-	
-	# Apito para começar a rodada
+	imagem_acerto.visible = false
+	imagem_erro.visible = false
+	chutando = false
+
 	if has_node("/root/AudioManager"):
 		get_node("/root/AudioManager").tocar_apito()
 
 func _calcular_alvo_no_gol(botao) -> Vector2:
-	# Define a área do gol baseada nas posições do campo
-	# O gol fica na parte superior central do campo, ao redor do goleiro
-	var gol_centro_x = goleiro.position.x   # Centro horizontal do gol (596)
-	var gol_topo_y = goleiro.position.y - 55  # Topo do gol (acima do goleiro)
-	var gol_base_y = goleiro.position.y + 55  # Base do gol (abaixo do goleiro)
-	var gol_largura = 350  # Largura total do gol
-	
-	# Mapear cada botão para uma posição dentro do gol
-	# Cada sílaba vai para um canto diferente, com boa separação
-	if botao == s1:
-		# Silaba1 (esquerda cima) -> canto superior esquerdo do gol
-		return Vector2(gol_centro_x - gol_largura * 0.45, gol_topo_y)
-	elif botao == s2:
-		# Silaba2 (esquerda baixo) -> canto inferior esquerdo do gol
-		return Vector2(gol_centro_x - gol_largura * 0.45, gol_base_y)
-	elif botao == s3:
-		# Silaba3 (direita cima) -> canto superior direito do gol
-		return Vector2(gol_centro_x + gol_largura * 0.45, gol_topo_y)
-	elif botao == s4:
-		# Silaba4 (direita baixo) -> canto inferior direito do gol
-		return Vector2(gol_centro_x + gol_largura * 0.45, gol_base_y)
-	
-	# Fallback: centro do gol
-	return Vector2(gol_centro_x, goleiro.position.y)
+	return botao.global_position + (botao.size / 2)
 
 func clicar_silaba(botao):
-	var alvo = _calcular_alvo_no_gol(botao)
-	jogador.animar_chute()
-	bola.chutar(alvo)
-	
-	# Som de chute
-	if has_node("/root/AudioManager"):
-		get_node("/root/AudioManager").tocar_chute()
+	if chutando:
+		return
 
+	chutando = true
+
+	var alvo = _calcular_alvo_no_gol(botao)
 	var texto = botao.text.strip_edges().to_upper()
 	var fase = fases[fase_atual]
+
+	jogador.animar_chute()
+	bola.chutar(alvo)
+
+	if has_node("/root/AudioManager"):
+		get_node("/root/AudioManager").tocar_chute()
 
 	if texto != resposta_correta:
 		goleiro.defender(alvo)
 
-	# Espera o tempo da animação da bola chegar ao alvo
-	await get_tree().create_timer(0.7).timeout
+	await get_tree().create_timer(0.8).timeout
 
 	if texto == resposta_correta:
 		mensagem.text = "GOL! FORMOU " + fase["palavra"]
 		imagem_acerto.visible = true
-		
 		total_gols += 1
+		pontos += 10
 		atualizar_placar()
-		
-		# Som de gol
+
 		if has_node("/root/AudioManager"):
 			get_node("/root/AudioManager").tocar_gol()
-		await get_tree().create_timer(1.5).timeout
-		imagem_acerto.visible = false
 
+		await get_tree().create_timer(1.5).timeout
+
+		imagem_acerto.visible = false
 		fase_atual += 1
+
+		if pontos >= meta_pontos:
+			mostrar_premiacao()
+			return
 
 		if fase_atual >= fases.size():
 			fase_atual = 0
@@ -145,18 +143,53 @@ func clicar_silaba(botao):
 	else:
 		mensagem.text = "TENTE NOVAMENTE"
 		imagem_erro.visible = true
-		
 		total_erros += 1
+		estrelas = max(1, estrelas - 1)
 		atualizar_placar()
-		
-		# Som de erro
+
 		if has_node("/root/AudioManager"):
 			get_node("/root/AudioManager").tocar_erro()
 
 		await get_tree().create_timer(1.5).timeout
+
 		imagem_erro.visible = false
 		mensagem.text = ""
+		chutando = false
 
 func atualizar_placar():
+	pontos_label.text = "PONTOS: " + str(pontos)
 	gols_label.text = "GOLS: " + str(total_gols)
 	erros_label.text = "ERROS: " + str(total_erros)
+
+func mostrar_premiacao():
+	chutando = true
+	
+	var textura_estrelas
+	if estrelas == 3:
+		textura_estrelas = load("res://assets/3estrelas.png")
+	elif estrelas == 2:
+		textura_estrelas = load("res://assets/2estrelas.png")
+	else:
+		textura_estrelas = load("res://assets/1estrelas.png")
+		
+	trofeu_rect.texture = textura_estrelas
+	painel_premiacao.visible = true
+	if has_node("/root/AudioManager"):
+		get_node("/root/AudioManager").tocar_vitoria()
+
+func reiniciar_jogo():
+	if has_node("/root/AudioManager"):
+		get_node("/root/AudioManager").tocar_botao()
+	pontos = 0
+	total_gols = 0
+	total_erros = 0
+	estrelas = 3
+	fase_atual = 0
+	painel_premiacao.visible = false
+	carregar_fase()
+	atualizar_placar()
+
+func voltar_ao_menu():
+	if has_node("/root/AudioManager"):
+		get_node("/root/AudioManager").tocar_botao()
+	get_tree().change_scene_to_file("res://scenes/Menu.tscn")

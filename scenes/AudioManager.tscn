@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dg2k3n8p4x7r8"]
+[gd_scene load_steps=20 format=3 uid="uid://dg2k3n8p4x7r8"]
 
 [ext_resource type="Script" path="res://scripts/AudioManager.gd" id="1_audio"]
 [ext_resource type="AudioStream" uid="uid://chute_id" path="res://assets/sounds/chute.mp3" id="2_chute"]
@@ -14,6 +14,9 @@
 [ext_resource type="Texture2D" uid="uid://seta_id" path="res://assets/menu/seta_back.png" id="12_back"]
 [ext_resource type="Texture2D" uid="uid://track_id" path="res://assets/menu/slider_vol.png" id="13_track"]
 [ext_resource type="Texture2D" uid="uid://grab_id" path="res://assets/menu/slider_vol2.png" id="14_grab"]
+[ext_resource type="AudioStream" path="res://assets/sounds/tafarel.mp3" id="15_tafarel"]
+[ext_resource type="AudioStream" path="res://assets/sounds/joga-luva-goleirao-meme.mp3" id="16_luva"]
+[ext_resource type="AudioStream" path="res://assets/sounds/intro-uefa-champions-league2.mp3" id="17_uefa"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_track"]
 texture = ExtResource("13_track")
@@ -51,6 +54,15 @@ autoplay = true
 [node name="MusicPlayer2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_ambiente2")
 volume_db = -15.0
+
+[node name="SFXTafarel" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_tafarel")
+
+[node name="SFXLuva" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_luva")
+
+[node name="MusicUEFA" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_uefa")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 100

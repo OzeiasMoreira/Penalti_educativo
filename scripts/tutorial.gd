@@ -7,7 +7,7 @@ extends Node2D
 
 var passo_atual = 0
 var imagens = [
-	preload("res://assets/bola.png"),
+	preload("res://assets/bola-removebg-preview.png"),
 	preload("res://assets/alvoozi.png"),
 	preload("res://assets/jogador.png"),
 	preload("res://assets/goleiro.png")

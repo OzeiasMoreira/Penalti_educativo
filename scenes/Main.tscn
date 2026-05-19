@@ -165,20 +165,6 @@ layout_mode = 2
 expand_mode = 1
 stretch_mode = 5
 
-[node name="ImagemAcerto" type="Sprite2D" parent="." unique_id=532847193]
-visible = false
-z_index = 10
-position = Vector2(576, 324)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("9_acerto")
-
-[node name="ImagemErro" type="Sprite2D" parent="." unique_id=913456782]
-visible = false
-z_index = 10
-position = Vector2(576, 324)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("10_erro")
-
 [node name="HUD" type="CanvasLayer" parent="." unique_id=614465082]
 
 [node name="Placar" type="PanelContainer" parent="HUD" unique_id=293043726]
@@ -197,6 +183,15 @@ layout_mode = 2
 theme_override_constants/separation = 5
 alignment = 1
 
+[node name="PontosLabel" type="Label" parent="HUD/Placar/VBoxContainer" unique_id=748293719]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.8, 0.2, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 32
+text = "PONTOS: 0"
+horizontal_alignment = 1
+
 [node name="GolsLabel" type="Label" parent="HUD/Placar/VBoxContainer" unique_id=1328884280]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.4, 1, 0.4, 1)
@@ -214,3 +209,67 @@ theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 32
 text = "ERROS: 0"
 horizontal_alignment = 1
+
+[node name="ImagemAcerto" type="TextureRect" parent="HUD" unique_id=532847193]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_acerto")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ImagemErro" type="TextureRect" parent="HUD" unique_id=913456782]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_erro")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PainelPremiacao" type="Control" parent="HUD" unique_id=381920485]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Trofeu" type="TextureRect" parent="HUD/PainelPremiacao" unique_id=682910485]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_acerto")
+expand_mode = 1
+stretch_mode = 0
+
+[node name="BotaoJogarNovamente" type="Button" parent="HUD/PainelPremiacao/Trofeu" unique_id=782910485]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.32
+anchor_top = 0.71
+anchor_right = 0.68
+anchor_bottom = 0.83
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="BotaoMenu" type="Button" parent="HUD/PainelPremiacao/Trofeu" unique_id=882910485]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.39
+anchor_top = 0.84
+anchor_right = 0.61
+anchor_bottom = 0.93
+grow_horizontal = 2
+grow_vertical = 2
+flat = true

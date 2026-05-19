@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://djxg5atk01j24"]
 
 [ext_resource type="Script" path="res://scripts/menu.gd" id="1_upctu"]
-[ext_resource type="Texture2D" uid="uid://onurvqlu3qnp" path="res://assets/intro_penaltieducativo.png" id="1_xdvgc"]
+[ext_resource type="Texture2D" uid="uid://onurvqlu3qnp" path="res://assets/capa_penaltieducativo.png" id="1_xdvgc"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
