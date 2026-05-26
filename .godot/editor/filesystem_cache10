@@ -1,7 +1,10 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1779218837
-export_presets.cfg::TextFile::-1::1779218836::0::1::::<><><>0<>0<><>::
+::res://::1779336503
+export_presets.cfg::TextFile::-1::1779221298::0::1::::<><><>0<>0<><>::
 icon.svg::CompressedTexture2D::3429569648499380673::1777931715::1777931722::1::::<><><>0<>0<>2627ecd891a0847494653dc9b8e88df8<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
+index.apple-touch-icon.png::CompressedTexture2D::6809356736708338892::1779221298::1779221330::1::::<><><>0<>0<>2c45284456d061473a78c105168705e3<>res://.godot/imported/index.apple-touch-icon.png-8085a11cc297d91deb55511843765958.ctex::
+index.icon.png::CompressedTexture2D::5567031744628266321::1779221298::1779221330::1::::<><><>0<>0<>182a023a4fc5626f1719ddb36a36d4c4<>res://.godot/imported/index.icon.png-5665fad188e88d1e882500a4376bfe02.ctex::
+index.png::CompressedTexture2D::2186287450870806015::1779221298::1779221330::1::::<><><>0<>0<>77b3eb345f6ee3084d74e6a4c6bba7dc<>res://.godot/imported/index.png-5122033cac747157decad52589e2295c.ctex::
 PenaltiEducativo.apple-touch-icon.png::CompressedTexture2D::2137729333098633476::1779218837::1779218897::1::::<><><>0<>0<>541a3f79e6d8006cd32e917c97352c7b<>res://.godot/imported/PenaltiEducativo.apple-touch-icon.png-e811ec9f67aae7fffc47d73fe6b7ae4e.ctex::
 PenaltiEducativo.icon.png::CompressedTexture2D::9160318576160556035::1779218837::1779218897::1::::<><><>0<>0<>747a27e2bad9bd7bd3694ff237d1845e<>res://.godot/imported/PenaltiEducativo.icon.png-1861373e937220465da5ab6ab76ac02a.ctex::
 PenaltiEducativo.png::CompressedTexture2D::8653338221183744270::1779218837::1779218897::1::::<><><>0<>0<>c0a31359a876221c16e4163d85980f5b<>res://.godot/imported/PenaltiEducativo.png-bdba4a0a75c669537f3e8be843b287ac.ctex::
@@ -52,7 +55,7 @@ tafarel.mp3::AudioStreamMP3::4111415353502401318::1778610438::1778611630::1::::<
 CONTRIBUICOES_PEDAGOGICAS.md::TextFile::-1::1779208134::0::1::::<><><>0<>0<><>::
 ::res://intro/::1778004745
 assets_Intro_IntroNinoEdu.ogv::VideoStreamTheora::2039834765129821463::1778004682::0::1::::<><><>0<>0<><>::
-::res://scenes/::1778614142
+::res://scenes/::1779221280
 AudioManager.tscn::PackedScene::7636791218927437451::1779217593::0::1::::<><><>0<>0<><>::res://scripts/AudioManager.gd<>res://assets/sounds/chute.mp3<>res://assets/sounds/goalsound.mp3<>res://assets/sounds/defesa_do_goleiro.mp3<>res://assets/sounds/som_ambiente.mp3<>res://assets/sounds/apito.mp3<>res://assets/sounds/clicar_jogar.mp3<>res://assets/sounds/errou.mp3<>res://assets/sounds/som_ambiente2.mp3<>res://assets/menu/menu_fixo.png<>res://assets/menu/volume.png<>res://assets/menu/seta_back.png<>res://assets/menu/slider_vol.png<>res://assets/menu/slider_vol2.png
 Ball.tscn::PackedScene::3218786347738460644::1777938995::0::1::::<><><>0<>0<><>::
 Goalkeeper.tscn::PackedScene::4763221796599884875::1777939003::0::1::::<><><>0<>0<><>::
@@ -61,7 +64,7 @@ Main.tscn::PackedScene::189389779330400986::1779214030::0::1::::<><><>0<>0<><>::
 Menu.tscn::PackedScene::7838860237778794935::1779218067::0::1::::<><><>0<>0<><>::res://scripts/menu.gd<>uid://onurvqlu3qnp::::res://assets/intro_penaltieducativo.png
 Player.tscn::PackedScene::5835572740771478252::1777938982::0::1::::<><><>0<>0<><>::
 SyllableTarget.tscn::PackedScene::2699621151570483483::1777939015::0::1::::<><><>0<>0<><>::
-Tutorial.tscn::PackedScene::1837989596545800677::1778614142::0::1::::<><><>0<>0<><>::uid://dpatfbfhfppbl::::res://scripts/tutorial.gd<>uid://b1xupvp8ufsn5::::res://assets/campo.png
+Tutorial.tscn::PackedScene::1837989596545800677::1779221280::0::1::::<><><>0<>0<><>::uid://dpatfbfhfppbl::::res://scripts/tutorial.gd<>uid://b1xupvp8ufsn5::::res://assets/campo.png
 ::res://scripts/::1779214347
 AudioManager.gd::GDScript::2807307913136856265::1779217627::0::1::::<>Node<><>0<>0<><>::
 Ball.gd::GDScript::9099606318221930059::1777939719::0::1::::<>Sprite2D<><>0<>0<><>::
